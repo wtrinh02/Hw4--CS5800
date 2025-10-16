@@ -14,15 +14,16 @@ public class Order {
         order.add(fooditem);
     }
 
-    public String listOrder(){
+    public void listOrder(){
 
-        String totalOrder = "";
+        String totalOrder = "Your order is ";
 
         for (Food item : order){
-            totalOrder += item.name() + " ";
+            totalOrder += item.name() + ", ";
         }
-
-        return totalOrder;
+        totalOrder = totalOrder.replaceAll(", $", "");
+        totalOrder +=  ".";
+        System.out.println(totalOrder);
     }
 
     public double calculateCost(){
@@ -31,5 +32,13 @@ public class Order {
             total += item.cost();
         }
         return total;
+    }
+
+    public int getOrderSize(){
+        return order.size();
+    }
+
+    public void createNewOrder(){
+        order.clear();
     }
 }
